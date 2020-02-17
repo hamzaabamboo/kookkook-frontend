@@ -1,0 +1,11 @@
+@import "../../assets/sass/variables.scss";
+
+.bg-yellow {
+  background-color: $theme-yellow-color;
+}
+
+.navbar-dark .navbar-brand {
+  color: #393e41;
+  font-weight: $font-weight-book;
+  text-align: center;
+}

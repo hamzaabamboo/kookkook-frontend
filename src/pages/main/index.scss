@@ -1,0 +1,42 @@
+@import "../../assets/sass/variables.scss";
+
+.bg-dashboard {
+  background-color: #f7f9fb;
+}
+
+.tab-active {
+  color: $theme-blug-green-color;
+  fill: $theme-blug-green-color;
+  fill-opacity: 1;
+  stroke-opacity: 1;
+  padding-left: 0;
+  background-color: white;
+}
+
+.tab {
+  padding-left: 0;
+  background-color: white;
+}
+
+svg {
+  fill: #bdbdbd;
+  fill-opacity: 0.6;
+}
+
+svg:hover {
+  fill: $theme-blug-green-color;
+  fill-opacity: 1;
+  stroke-opacity: 1;
+}
+
+.line {
+  stroke: #bdbdbd;
+  stroke-opacity: 0.6;
+  stroke-width: 2;
+}
+
+.line-hover {
+  stroke: $theme-blug-green-color;
+  stroke-width: 2;
+  padding-left: 0;
+}

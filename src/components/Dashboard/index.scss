@@ -1,0 +1,12 @@
+@import "../../assets/sass/variables.scss";
+
+.bg-card {
+  background-color: white;
+  min-height: 217px;
+}
+
+.text-number {
+  font-weight: $font-weight-medium;
+  font-size: 3.75rem;
+  color: $theme-blug-green-color;
+}
