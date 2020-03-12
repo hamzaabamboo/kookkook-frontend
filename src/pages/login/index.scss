@@ -1,1 +1,28 @@
 @import "../../assets/sass/variables.scss";
+
+.text-label {
+  color: #4a4a4a;
+  font-size: 0.875rem;
+  font-weight: $font-weight-light;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: $theme-yellow-color !important;
+  border-color: $theme-yellow-color !important;
+}
+
+.text-forget {
+  text-decoration: underline;
+  color: #f24236;
+  font-size: 0.875rem;
+  font-weight: $font-weight-light;
+}
+
+::placeholder {
+  font-size: 0.875rem;
+  font-weight: $font-weight-light;
+  color: #bdbdbd;
+}

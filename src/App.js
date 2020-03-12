@@ -4,27 +4,33 @@ import "./App.css";
 import "./assets/sass/theme.scss";
 import Nav from "./components/Navbar";
 import MainTabs from "./pages/main";
+import Temp from "./pages/temperature";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <div>
+    <div id="outer-container">
+      <Router>
         <Nav />
-        <MainTabs />
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          {/* <Route path="/users">
+        <div id="page-wrap">
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/temp">{/* <Temp /> */}</Route>
+            <Route path="/main">
+              <MainTabs />
+            </Route>
+            {/* <Route path="/users">
             <Users />
           </Route>
           <Route path="/">
             <Home />
           </Route> */}
-        </Switch>
-      </div>
-    </Router>
+          </Switch>
+        </div>
+      </Router>
+    </div>
   );
 }
 

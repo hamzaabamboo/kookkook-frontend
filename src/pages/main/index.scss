@@ -23,7 +23,7 @@ svg {
   fill-opacity: 0.6;
 }
 
-svg:hover {
+.tab-active svg {
   fill: $theme-blug-green-color;
   fill-opacity: 1;
   stroke-opacity: 1;

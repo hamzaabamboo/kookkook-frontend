@@ -8,4 +8,23 @@
   color: #393e41;
   font-weight: $font-weight-book;
   text-align: center;
+  &:hover {
+    color: #393e41;
+    font-weight: $font-weight-book;
+    text-align: center;
+  }
+}
+
+.text-name {
+  color: black;
+  font-size: 1.125rem;
+  font-weight: $font-weight-bold;
+}
+
+#btn-dropdown {
+  color: black;
+  font-size: 0.75rem;
+  font-weight: $font-weight-light;
+  // padding: 0;
+  // width: fit-content;
 }
