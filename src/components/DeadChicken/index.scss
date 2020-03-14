@@ -1,0 +1,30 @@
+@import "../../assets/sass/variables.scss";
+
+.text-label-ch {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: $font-weight-light;
+}
+
+.map {
+  width: 18.125rem;
+  height: 18.125rem;
+  margin: 0 auto;
+  margin-top: 3.125rem;
+  // text-align: center;
+}
+
+.square {
+  width: 8.33%;
+  height: 8.33%;
+  float: left;
+  line-height: 1rem;
+  background: $theme-yellow-color;
+  box-sizing: border-box;
+  margin: 0.15rem;
+  user-select: none;
+}
+
+.square.red {
+  background: $theme-red-color;
+}
