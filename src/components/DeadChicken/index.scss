@@ -13,6 +13,11 @@
     margin-left: 1rem;
     // text-align: center;
 }
+.map-label {
+    color: rgba(115, 114, 114, 0.6);
+    font-size: 0.7rem;
+    font-weight: $font-weight-medium;
+}
 
 .row {
     width: 100%;
@@ -20,19 +25,12 @@
 }
 
 .square {
-    width: 4.5%;
+    width: 4%;
     height: 84.2%;
     float: left;
     background: $theme-yellow-color;
     margin: 0% 0% 0.2rem 0%;
-    //margin-left: 0.5%;
-    //margin-bottom: 0.2rem;
 }
-
-//.water-line {
-//   border-left: 5rem $theme-blug-green-color;
-//   height: 100%;
-//}
 
 .square.red {
     background: $theme-red-color;

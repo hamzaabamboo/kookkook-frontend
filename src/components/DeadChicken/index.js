@@ -9,6 +9,9 @@ const square = isChickenDead => {
 const eachrow = row => {
     return (
         <div className="row">
+            <p className="map-label" style={{ marginRight: '0.5rem' }}>
+                1
+            </p>
             {square(row[0])}
             <div className="square water-line"></div>
             {square(row[1])}
@@ -36,6 +39,22 @@ const eachrow = row => {
             {square(row[12])}
             <div className="square water-line"></div>
             {square(row[13])}
+        </div>
+    );
+};
+
+const colLabel = char => {
+    return (
+        <div
+            className="map-label"
+            style={{
+                marginBottom: '0.4rem',
+                marginRight: '0.333rem',
+                width: '5%',
+                float: 'left',
+            }}
+        >
+            {char}
         </div>
     );
 };
@@ -427,12 +446,32 @@ const DeadChicken = () => {
             false,
         ],
     ];
+    const chars = [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+    ];
     return (
         <Container>
             <div className="text-label-ch" style={{ marginTop: '2.5rem' }}>
                 <p>Please select on dead chicken location</p>
             </div>
-            <div className="map">{zoneStatus.map(row => eachrow(row))}</div>
+
+            <div className="map">
+                {chars.map(char => colLabel(char))}
+                {zoneStatus.map(row => eachrow(row))}
+            </div>
         </Container>
     );
 };
