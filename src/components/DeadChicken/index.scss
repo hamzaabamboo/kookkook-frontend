@@ -1,30 +1,53 @@
-@import "../../assets/sass/variables.scss";
+@import '../../assets/sass/variables.scss';
 
 .text-label-ch {
-  color: #000000;
-  font-size: 1rem;
-  font-weight: $font-weight-light;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: $font-weight-light;
 }
 
 .map {
-  width: 18.125rem;
-  height: 18.125rem;
-  margin: 0 auto;
-  margin-top: 3.125rem;
-  // text-align: center;
+    width: 19rem;
+    height: 30rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    // text-align: center;
+}
+
+.row {
+    width: 100%;
+    height: 4%;
 }
 
 .square {
-  width: 8.33%;
-  height: 8.33%;
-  float: left;
-  line-height: 1rem;
-  background: $theme-yellow-color;
-  box-sizing: border-box;
-  margin: 0.15rem;
-  user-select: none;
+    width: 4.5%;
+    height: 84.2%;
+    float: left;
+    background: $theme-yellow-color;
+    margin: 0% 0% 0.2rem 0%;
+    //margin-left: 0.5%;
+    //margin-bottom: 0.2rem;
 }
 
+//.water-line {
+//   border-left: 5rem $theme-blug-green-color;
+//   height: 100%;
+//}
+
 .square.red {
-  background: $theme-red-color;
+    background: $theme-red-color;
+}
+
+.square.food-line {
+    width: 0.7%;
+    height: 100%;
+    margin: 0rem 0.2rem;
+    background: $theme-blug-green-color;
+}
+
+.square.water-line {
+    width: 0.6%;
+    height: 100%;
+    margin: 0rem 0.2rem;
+    background: $theme-blue-color;
 }
