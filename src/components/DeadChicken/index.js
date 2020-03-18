@@ -6,11 +6,14 @@ const square = isChickenDead => {
     return <div className={`square ${isChickenDead ? 'red' : ''}`}></div>;
 };
 
-const eachrow = row => {
+const eachrow = (row, num) => {
     return (
         <div className="row">
-            <p className="map-label" style={{ marginRight: '0.5rem' }}>
-                1
+            <p
+                className="map-label"
+                style={{ marginRight: '0.9rem', width: '0.3rem' }}
+            >
+                {num}
             </p>
             {square(row[0])}
             <div className="square water-line"></div>
@@ -49,7 +52,7 @@ const colLabel = char => {
             className="map-label"
             style={{
                 marginBottom: '0.4rem',
-                marginRight: '0.333rem',
+                marginLeft: '0.35rem',
                 width: '5%',
                 float: 'left',
             }}
@@ -467,10 +470,9 @@ const DeadChicken = () => {
             <div className="text-label-ch" style={{ marginTop: '2.5rem' }}>
                 <p>Please select on dead chicken location</p>
             </div>
-
             <div className="map">
                 {chars.map(char => colLabel(char))}
-                {zoneStatus.map(row => eachrow(row))}
+                {zoneStatus.map(row => eachrow(row, zoneStatus.indexOf(row)))}
             </div>
         </Container>
     );
