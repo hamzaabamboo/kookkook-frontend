@@ -1,0 +1,15 @@
+@import '../../assets/sass/variables.scss';
+
+.bg-light-blue {
+    background-color: $theme-light-blue;
+}
+
+.text-form-label {
+    color: #828282;
+    font-size: 1rem;
+    font-weight: $font-weight-medium;
+}
+
+::placeholder {
+    color: rgba(189, 189, 189, 0.8);
+}

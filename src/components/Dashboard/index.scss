@@ -1,56 +1,62 @@
-@import "../../assets/sass/variables.scss";
+@import '../../assets/sass/variables.scss';
 
 .bg-house {
-  background-color: $theme-yellow-color;
-  min-height: 23px;
-  border-radius: 8px;
-  width: 84px;
+    background-color: $theme-yellow-color;
+    min-height: 23px;
+    border-radius: 8px;
+    width: 84px;
 }
 
 .text-house {
-  color: #171717;
-  font-size: 0.75rem;
-  width: fit-content;
+    color: #171717;
+    font-size: 0.75rem;
+    width: fit-content;
 }
 
 .text-image {
-  width: 24px;
-  padding-right: 2px;
-  flex-shrink: 1;
+    width: 24px;
+    padding-right: 2px;
+    flex-shrink: 1;
 }
 
 .bg-card {
-  background-color: white;
-  min-height: 217px;
-  border-radius: 8px;
+    background-color: white;
+    min-height: 217px;
+    border-radius: 8px;
 }
 
 .text-record {
-  font-weight: $font-weight-medium;
-  font-size: 3.75rem;
-  color: #3aafae;
+    font-weight: $font-weight-medium;
+    font-size: 3.75rem;
+    color: #3aafae;
+}
+
+.text-irregular {
+    font-weight: $font-weight-medium;
+    font-size: 3.75rem;
+    color: #ff4d6b;
 }
 
 .text-unit {
-  font-weight: $font-weight-light;
-  font-size: 0.5rem;
-  color: #393e41;
+    font-weight: $font-weight-light;
+    font-size: 0.5rem;
+    color: #393e41;
 }
 
 .text-percent {
-  font-weight: $font-weight-medium;
-  font-size: 0.5rem;
-  color: #777575;
+    font-weight: $font-weight-medium;
+    font-size: 0.5rem;
+    color: #777575;
 }
 
 .text-measure {
-  font-weight: $font-weight-bold;
-  font-size: 85%;
-  color: #393e41;
+    font-weight: $font-weight-bold;
+    font-size: 85%;
+    color: #393e41;
 }
 
 .text-sensor {
-  font-weight: $font-weight-medium;
-  font-size: 0.5rem;
-  color: #979797;
+    font-weight: $font-weight-medium;
+    font-size: 0.5rem;
+    color: #979797;
 }

@@ -1,30 +1,44 @@
-@import "../../assets/sass/variables.scss";
+@import '../../assets/sass/variables.scss';
 
 .bg-yellow {
-  background-color: $theme-yellow-color;
+    background-color: $theme-yellow-color;
 }
 
 .navbar-dark .navbar-brand {
-  color: #393e41;
-  font-weight: $font-weight-book;
-  text-align: center;
-  &:hover {
     color: #393e41;
     font-weight: $font-weight-book;
     text-align: center;
-  }
+    &:hover {
+        color: #393e41;
+        font-weight: $font-weight-book;
+        text-align: center;
+    }
 }
 
 .text-name {
-  color: black;
-  font-size: 1.125rem;
-  font-weight: $font-weight-bold;
+    color: black;
+    font-size: 1.125rem;
+    font-weight: $font-weight-bold;
 }
 
 #btn-dropdown {
-  color: black;
-  font-size: 0.75rem;
-  font-weight: $font-weight-light;
-  // padding: 0;
-  // width: fit-content;
+    color: black;
+    font-size: 0.75rem;
+    font-weight: $font-weight-light;
+    // padding: 0;
+    // width: fit-content;
+}
+
+.border-line {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.text-menu {
+    color: black;
+    font-size: 0.9375rem;
+    font-weight: $font-weight-regular;
+}
+
+a {
+    text-decoration: none;
 }
