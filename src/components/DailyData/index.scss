@@ -1,0 +1,89 @@
+@import "../../assets/sass/variables.scss";
+
+//index -> Daily data
+h4{
+    margin-top: 1.5rem
+}
+
+.selectDate.formLabel{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5 rem;
+    color: #828282;
+}
+
+.btnBack{
+    border: 2px solid $theme-yellow-color;
+    color: $theme-yellow-color;
+    width: 100px;
+    height: 38px;
+}
+
+.btnSubmit{
+    background-color: $theme-yellow-color;
+    width: 100px;
+    height: 38px;
+    color: white;
+}
+
+.btnSave{
+    border: 2px solid $theme-yellow-color;
+    color: $theme-yellow-color;
+    width: 100px;
+    height: 38px;
+}
+
+.button{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.containerHeight {
+    height: 'calc(100vh - 56px)';
+}
+
+// Fill in consumption 
+.foodIn.formLabel{
+    color: #828282
+}
+
+.foodLeft.formLabel{
+    color: #828282
+}
+
+.waterMeter1.formLabel{
+    color: #828282
+}
+
+.waterMeter2.formLabel{
+    color: #828282
+}
+
+//Fill in medicine
+.medicineIn.formLabel{
+    color: #828282
+}
+
+.btnAdd{
+    background-color: $theme-yellow-color;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 15px;
+}
+
+//Fill in chickens
+.numDeadChicken.formLabel{
+    color: #828282
+}
+
+.numZLegChicken.formLabel{
+    color: #828282
+}
+
+.numDwarfChicken.formLabel{
+    color: #828282
+}
+
+.numSickChicken.formLabel{
+    color: #828282
+}
