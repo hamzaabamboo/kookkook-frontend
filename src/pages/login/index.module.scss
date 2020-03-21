@@ -1,0 +1,27 @@
+@import '../../assets/sass/variables.scss';
+
+.bgLightBlue {
+    background-color: $theme-light-blue;
+}
+
+.textLabel {
+    color: #4a4a4a;
+    font-size: 0.875rem;
+    font-weight: $font-weight-light;
+}
+
+:global {
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+        background-color: $theme-yellow-color !important;
+        border-color: $theme-yellow-color !important;
+    }
+}
+
+::placeholder {
+    font-size: 0.875rem;
+    font-weight: $font-weight-light;
+    color: #bdbdbd;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import './index.scss';
+import styles from './index.module.scss';
 import upArrow from '../../static/icon/up_arrow.svg';
 import tempIcon from '../../static/icon/temperature.svg';
 import windIcon from '../../static/icon/wind.svg';
@@ -111,8 +111,12 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div className="bg-house mt-4 mb-3 mx-auto d-flex p-2 justify-content-center">
-                <div className="text-house text-center align-self-center">
+            <div
+                className={`${styles.bgHouse} mt-4 mb-3 mx-auto d-flex p-2 justify-content-center`}
+            >
+                <div
+                    className={`${styles.textHouse} text-center align-self-center`}
+                >
                     HOUSE A
                 </div>
             </div>
@@ -127,7 +131,9 @@ const Dashboard = () => {
                                 history.push(`/${data.url}`);
                             }}
                         >
-                            <div className="bg-card d-flex flex-column">
+                            <div
+                                className={`${styles.bgCard} d-flex flex-column`}
+                            >
                                 <div className="d-flex flex-column text-center flex-grow-1 h-100">
                                     <p
                                         className={`m-0 ${
@@ -138,10 +144,14 @@ const Dashboard = () => {
                                     >
                                         {data.result}
                                     </p>
-                                    <p className="text-unit m-0">{data.unit}</p>
+                                    <p className={`${styles.textUnit} m-0`}>
+                                        {data.unit}
+                                    </p>
                                     <div className="d-flex justify-content-center">
                                         <img src={upArrow} alt="upArrow" />
-                                        <p className="text-percent m-0">
+                                        <p
+                                            className={`${styles.textPercent} m-0`}
+                                        >
                                             {data.percentage}
                                         </p>
                                     </div>
@@ -150,13 +160,17 @@ const Dashboard = () => {
                                     <img
                                         src={data.enviIcon}
                                         alt={data.alt}
-                                        className="text-image mr-2"
+                                        className={`${styles.textImage} mr-2`}
                                     />
                                     <div className="d-flex flex-column flex-grow-1 w-100">
-                                        <p className="text-measure m-0">
+                                        <p
+                                            className={`${styles.textMeasure} m-0`}
+                                        >
                                             {data.measure}
                                         </p>
-                                        <p className="text-sensor m-0">
+                                        <p
+                                            className={`${styles.textSensor} m-0`}
+                                        >
                                             From {data.sensor} sensors
                                         </p>
                                     </div>

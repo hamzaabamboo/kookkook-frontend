@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.scss';
+import styles from './index.module.scss';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -14,10 +14,10 @@ const ManageFlock = () => {
     const [gender, setGender] = useState();
     const [chickenType, setChickenType] = useState();
     return (
-        <Container className="bg-light-blue pt-4 vh-100">
+        <Container className={`${styles.bgLightBlue} pt-4 vh-100`}>
             <Form>
                 <Form.Group controlId="formFlockName">
-                    <Form.Label className="text-form-label">
+                    <Form.Label className={styles.textFormLabel}>
                         Flock Name
                     </Form.Label>
                     <Form.Control
@@ -29,7 +29,7 @@ const ManageFlock = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formChickenInDate">
-                    <Form.Label className="text-form-label">
+                    <Form.Label className={styles.textFormLabel}>
                         Chicken in date
                     </Form.Label>
                     <Form.Control
@@ -41,7 +41,9 @@ const ManageFlock = () => {
                 </Form.Group>
 
                 <Form.Group controlId="form.SelectHouse">
-                    <Form.Label className="text-form-label">House</Form.Label>
+                    <Form.Label className={styles.textFormLabel}>
+                        House
+                    </Form.Label>
                     {/* <DropdownButton
                         id="dropdown-basic-button"
                         title="Select House"
@@ -69,7 +71,7 @@ const ManageFlock = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formAmountOfChickens">
-                    <Form.Label className="text-form-label">
+                    <Form.Label className={styles.textFormLabel}>
                         Amount of Chickens
                     </Form.Label>
                     <Form.Control
@@ -81,7 +83,9 @@ const ManageFlock = () => {
                 </Form.Group>
 
                 <Form.Group controlId="form.SelectGender">
-                    <Form.Label className="text-form-label">Gender</Form.Label>
+                    <Form.Label className={styles.textFormLabel}>
+                        Gender
+                    </Form.Label>
                     <Form.Control
                         as="select"
                         onSelect={e => setGender(e.target.value)}
@@ -94,7 +98,7 @@ const ManageFlock = () => {
                 </Form.Group>
 
                 <Form.Group controlId="form.SelectChickenType">
-                    <Form.Label className="text-form-label">
+                    <Form.Label className={styles.textFormLabel}>
                         Chicken Type
                     </Form.Label>
                     <Form.Control

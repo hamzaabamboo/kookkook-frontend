@@ -1,61 +1,61 @@
 @import '../../assets/sass/variables.scss';
 
-.bg-house {
+.bgHouse {
     background-color: $theme-yellow-color;
     min-height: 23px;
     border-radius: 8px;
     width: 84px;
 }
 
-.text-house {
+.textHouse {
     color: #171717;
     font-size: 0.75rem;
     width: fit-content;
 }
 
-.text-image {
+.textImage {
     width: 24px;
     padding-right: 2px;
     flex-shrink: 1;
 }
 
-.bg-card {
+.bgCard {
     background-color: white;
     min-height: 217px;
     border-radius: 8px;
 }
 
-.text-record {
+.textRecord {
     font-weight: $font-weight-medium;
     font-size: 3.75rem;
     color: #3aafae;
 }
 
-.text-irregular {
+.textIrregular {
     font-weight: $font-weight-medium;
     font-size: 3.75rem;
     color: #ff4d6b;
 }
 
-.text-unit {
+.textUnit {
     font-weight: $font-weight-light;
     font-size: 0.5rem;
     color: #393e41;
 }
 
-.text-percent {
+.textPercent {
     font-weight: $font-weight-medium;
     font-size: 0.5rem;
     color: #777575;
 }
 
-.text-measure {
+.textMeasure {
     font-weight: $font-weight-bold;
     font-size: 85%;
     color: #393e41;
 }
 
-.text-sensor {
+.textSensor {
     font-weight: $font-weight-medium;
     font-size: 0.5rem;
     color: #979797;

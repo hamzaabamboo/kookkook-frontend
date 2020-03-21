@@ -1,4 +1,4 @@
-import './index.scss';
+import styles from './index.module.scss';
 
 import React, { useState } from 'react';
 
@@ -24,7 +24,7 @@ const Login = () => {
     };
 
     return (
-        <div className="bg-light-blue vh-100">
+        <div className={`${styles.bgLightBlue} vh-100`}>
             <img
                 src={KookKookLogo}
                 alt="kookkook_logo"
@@ -33,7 +33,9 @@ const Login = () => {
             <Container>
                 <Form>
                     <Form.Group controlId="formUsername">
-                        <Form.Label className="text-label">USERNAME</Form.Label>
+                        <Form.Label className={styles.textLabel}>
+                            USERNAME
+                        </Form.Label>
                         <Form.Control
                             type="text"
                             onChange={e => setUsername(e.target.value)}
@@ -43,7 +45,9 @@ const Login = () => {
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label className="text-label">PASSWORD</Form.Label>
+                        <Form.Label className={styles.textLabel}>
+                            PASSWORD
+                        </Form.Label>
                         <Form.Control
                             type="password"
                             onChange={e => setPassword(e.target.value)}
@@ -57,7 +61,7 @@ const Login = () => {
                     type="button"
                     onClick={() => login()}
                 >
-                    <div className="text-btn">Log In</div>
+                    <div className={styles.textBtn}>Log In</div>
                 </Button>
             </Container>
         </div>

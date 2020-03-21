@@ -11,13 +11,12 @@ import CreateAccountLogo from '../../static/icon/createaccount.svg';
 import ManageChickenLogo from '../../static/icon/managechicken.svg';
 import LogoutLogo from '../../static/icon/logout.svg';
 import BackBtn from '../../static/icon/backBtn.svg';
-import './index.scss';
+import styles from './index.module.scss';
 import { slide as Menu } from 'react-burger-menu';
+import { useHistory } from 'react-router-dom';
 
 const Nav = () => {
-    // const showSettings = e => {
-    //     e.preventDefault();
-    // };
+    const history = useHistory();
     return (
         <>
             <Menu
@@ -28,8 +27,8 @@ const Nav = () => {
             >
                 <div className="d-flex flex-column align-items-end mb-4">
                     <img src={ProfilePic} alt="profile_pic" className="mb-2" />
-                    <div className="text-name">Worker Name</div>
-                    <DropdownButton id="btn-dropdown" title="House A">
+                    <div className={styles.textName}>Worker Name</div>
+                    <DropdownButton id={styles.btnDropdown} title="House A">
                         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">
                             Another action
@@ -39,16 +38,24 @@ const Nav = () => {
                         </Dropdown.Item>
                     </DropdownButton>
                 </div>
-                <div className="border-line"></div>
+                <div className={styles.borderLine}></div>
                 <div className="my-4">
                     <img src={SettingLogo} alt="setting_logo" />
-                    <a id="home" className="menu-item text-menu ml-3" href="/">
+                    <a
+                        id="home"
+                        className={`menu-item ${styles.textMenu} ml-3`}
+                        href="/"
+                    >
                         Settings and Privacy
                     </a>
                 </div>
                 <div className="my-4">
                     <img src={TermLogo} alt="term_logo" />
-                    <a id="about" className="menu-item text-menu ml-3" href="/">
+                    <a
+                        id="about"
+                        className={`menu-item ${styles.textMenu} ml-3`}
+                        href="/"
+                    >
                         Term and Conditions
                     </a>
                 </div>
@@ -56,7 +63,7 @@ const Nav = () => {
                     <img src={HelpLogo} alt="help_logo" />
                     <a
                         id="contact"
-                        className="menu-item text-menu ml-3"
+                        className={`menu-item ${styles.textMenu} ml-3`}
                         href="/"
                     >
                         Help
@@ -66,7 +73,7 @@ const Nav = () => {
                     <img src={CreateAccountLogo} alt="create_logo" />
                     <a
                         id="contact"
-                        className="menu-item text-menu ml-3"
+                        className={`menu-item ${styles.textMenu} ml-3`}
                         href="/"
                     >
                         Create Account
@@ -76,7 +83,7 @@ const Nav = () => {
                     <img src={ManageChickenLogo} alt="manage_logo" />
                     <a
                         id="contact"
-                        className="menu-item text-menu ml-3"
+                        className={`menu-item ${styles.textMenu} ml-3`}
                         href="/manage-chicken"
                     >
                         Manage Chicken
@@ -86,7 +93,7 @@ const Nav = () => {
                     <img src={LogoutLogo} alt="logout_logo" />
                     <a
                         id="contact"
-                        className="menu-item text-menu ml-3"
+                        className={`menu-item ${styles.textMenu} ml-3`}
                         href="/"
                     >
                         Logout
@@ -96,14 +103,15 @@ const Nav = () => {
             <Navbar
                 collapseOnSelect
                 expand="lg"
-                className="bg-yellow"
+                className={styles.bgYellow}
                 variant="dark"
             >
-                <img src={BackBtn} alt="back_btn" />
-                <Navbar.Brand
-                    href="#home"
-                    className="text-align-center flex-grow-1 m-0"
-                >
+                <img
+                    src={BackBtn}
+                    alt="back_btn"
+                    onClick={() => history.goBack()}
+                />
+                <Navbar.Brand className="text-align-center flex-grow-1 m-0">
                     kookkook
                 </Navbar.Brand>
             </Navbar>

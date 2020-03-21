@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import Chart from 'chart.js';
-import './index.scss';
+import './index.module.scss';
 import { Bar } from 'react-chartjs-2';
 import LeftArr from '../../static/icon/left_arr.svg';
 import RightArr from '../../static/icon/right_arr.svg';

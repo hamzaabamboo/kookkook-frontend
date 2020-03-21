@@ -1,27 +1,29 @@
 @import '../../assets/sass/variables.scss';
 
-.bg-yellow {
+.bgYellow {
     background-color: $theme-yellow-color;
 }
 
-.navbar-dark .navbar-brand {
-    color: #393e41;
-    font-weight: $font-weight-book;
-    text-align: center;
-    &:hover {
+:global {
+    .navbar-dark .navbar-brand {
         color: #393e41;
         font-weight: $font-weight-book;
         text-align: center;
+        &:hover {
+            color: #393e41;
+            font-weight: $font-weight-book;
+            text-align: center;
+        }
     }
 }
 
-.text-name {
+.textName {
     color: black;
     font-size: 1.125rem;
     font-weight: $font-weight-bold;
 }
 
-#btn-dropdown {
+#btnDropdown {
     color: black;
     font-size: 0.75rem;
     font-weight: $font-weight-light;
@@ -29,11 +31,11 @@
     // width: fit-content;
 }
 
-.border-line {
+.borderLine {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.text-menu {
+.textMenu {
     color: black;
     font-size: 0.9375rem;
     font-weight: $font-weight-regular;

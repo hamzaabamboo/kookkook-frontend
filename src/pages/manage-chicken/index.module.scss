@@ -1,51 +1,51 @@
 @import '../../assets/sass/variables.scss';
 
-.bg-light-blue {
+.bgLightBlue {
     background-color: $theme-light-blue;
 }
 
-.bg-box {
+.bgCard {
     background-color: white;
     width: 332px;
 }
 
-.text-flock-gen {
+.textFlockGen {
     color: #464646;
     font-weight: $font-weight-bold;
     font-size: 1rem;
     letter-spacing: 0.05em;
 }
 
-.text-date {
+.textDate {
     color: #888888;
     font-size: 0.5rem;
     font-weight: $font-weight-regular;
     letter-spacing: 0.05em;
 }
 
-.container-day {
+.containerDay {
     background-color: #2e86ab;
     border-radius: 4px;
 }
 
-.container-gender {
+.containerGender {
     background-color: #307fff;
     border-radius: 4px;
 }
 
-.container-type {
+.containerType {
     background-color: #3aafae;
     border-radius: 4px;
 }
 
-.text-container {
+.textContainer {
     color: #ffffff;
     margin: 0;
     font-size: 0.5rem;
     font-weight: $font-weight-regular;
 }
 
-.text-detail {
+.textDetail {
     color: #666666;
     font-size: 0.75rem;
     font-weight: $font-weight-regular;
