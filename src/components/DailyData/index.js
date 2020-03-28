@@ -1,5 +1,3 @@
-import "./index.scss"
-
 import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
@@ -9,6 +7,7 @@ import { FillInConsumption } from "./FillInConsumption";
 import Form from "react-bootstrap/Form";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import styles from "./index.module.scss";
 
 const DailyData = () => {
   const localDate = () => {
@@ -19,10 +18,10 @@ const DailyData = () => {
   const [startDate, setStartDate] = useState(localDate);
 
   return (
-    <Container className="containerHeight">
+    <Container className={styles.containerHeight}>
       <div>
         <Form.Group controlId="formDate">
-          <Form.Label className="selectDate"> HOUSE n </Form.Label>
+          <Form.Label className={styles.selectDate}> HOUSE n </Form.Label>
           <Form.Control
             type="date"
             defaultValue={startDate.substr(0, 10)}
@@ -43,15 +42,14 @@ const DailyData = () => {
       </div>
 
       <div className="d-flex justify-content-around">
-        <Button variant="backButton" type="button" className="btnBack"> Back </Button>
-        <Button variant="submitButton" type="button" className="btnSubmit"> Submit </Button>
-        <Button variant="saveButton" type="button" className="btnSave"> Save </Button>
+        <Button variant="backButton" type="button" className={styles.btnBack}> Back </Button>
+        <Button variant="submitButton" type="button" className={styles.btnSubmit} > Submit </Button>
       </div>
 
       <div className="d-flex justify-content-around">
         <Button variant="viewHistoryButton" type="button" className="btn-history"> VIEW HISTORY </Button>
       </div>
-    </Container>
+    </Container >
   );
 
 };
