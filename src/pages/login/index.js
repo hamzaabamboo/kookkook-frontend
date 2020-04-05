@@ -1,5 +1,3 @@
-import styles from './index.module.scss';
-
 import React, { useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
@@ -7,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import KookKookLogo from '../../static/logo/kookkook_logo.svg';
 import axios from 'axios';
+import styles from './index.module.scss';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
@@ -20,7 +19,7 @@ const Login = () => {
             { username, password },
         );
         localStorage.setItem('token', response.data.access_token);
-        history.push('/main');
+        history.push('/dashbaord');
     };
 
     return (

@@ -1,0 +1,72 @@
+@import '../../assets/sass/variables.scss';
+
+.textTitle {
+    color: #464646;
+    font-size: 1rem;
+    font-weight: $font-weight-bold;
+}
+
+.borderTitle {
+    border: 1px solid rgba(132, 130, 130, 0.6);
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.btnCreate {
+    background-color: $theme-yellow-color;
+    width: 173px;
+    height: 40px;
+    color: white;
+}
+
+.bgLightBlue {
+    background-color: $theme-light-blue;
+}
+
+.textFormLabel {
+    color: #828282;
+    font-size: 1rem;
+    font-weight: $font-weight-regular;
+}
+
+::placeholder {
+    font-size: 0.875rem;
+    font-weight: $font-weight-light;
+    color: #bdbdbd;
+}
+
+:global {
+    .form-control {
+        font-size: 0.875rem;
+        font-weight: $font-weight-light;
+        color: #bdbdbd;
+    }
+    option {
+        color: black;
+    }
+}
+
+.containerUpload {
+    position: relative;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    min-height: 133px;
+    max-width: 143px;
+    width: 100%;
+    z-index: 0;
+}
+
+.positionUpload {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    right: 35px;
+}
+
+.textUpload {
+    color: #909090;
+    font-size: 0.625rem;
+    font-weight: $font-weight-regular;
+}

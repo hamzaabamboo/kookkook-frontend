@@ -1,46 +1,52 @@
-import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import './index.scss';
+import React from 'react';
+import styles from './index.module.scss';
 
 const square = isChickenDead => {
-    return <div className={`square ${isChickenDead ? 'red' : ''}`}></div>;
+    return (
+        <div
+            className={`${styles.square} ${
+                isChickenDead ? `${styles.red}` : ''
+            }`}
+        ></div>
+    );
 };
 
 const eachrow = (row, num) => {
     return (
-        <div className="row">
+        <div className={styles.rowDeadChickenMap}>
             <p
-                className="map-label"
+                className={styles.mapLabel}
                 style={{ marginRight: '0.9rem', width: '0.3rem' }}
             >
                 {num}
             </p>
             {square(row[0])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[1])}
-            <div className="square food-line"></div>
+            <div className={`${styles.square} ${styles.foodLine}`}></div>
             {square(row[2])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[3])}
-            <div className="square food-line"></div>
+            <div className={`${styles.square} ${styles.foodLine}`}></div>
             {square(row[4])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[5])}
-            <div className="square food-line"></div>
+            <div className={`${styles.square} ${styles.foodLine}`}></div>
             {square(row[6])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[7])}
-            <div className="square food-line"></div>
+            <div className={`${styles.square} ${styles.foodLine}`}></div>
             {square(row[8])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[9])}
-            <div className="square food-line"></div>
+            <div className={`${styles.square} ${styles.foodLine}`}></div>
             {square(row[10])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[11])}
-            <div className="square food-line"></div>
+            <div className={`${styles.square} ${styles.foodLine}`}></div>
             {square(row[12])}
-            <div className="square water-line"></div>
+            <div className={`${styles.square} ${styles.waterLine}`}></div>
             {square(row[13])}
         </div>
     );
@@ -49,7 +55,7 @@ const eachrow = (row, num) => {
 const colLabel = char => {
     return (
         <div
-            className="map-label"
+            className={styles.mapLabel}
             style={{
                 marginBottom: '0.4rem',
                 marginLeft: '0.35rem',
@@ -467,10 +473,10 @@ const DeadChicken = () => {
     ];
     return (
         <Container>
-            <div className="text-label-ch" style={{ marginTop: '2.5rem' }}>
+            <div className={styles.textLabelCh} style={{ marginTop: '2.5rem' }}>
                 <p>Please select on dead chicken location</p>
             </div>
-            <div className="map">
+            <div className={styles.map}>
                 {chars.map(char => colLabel(char))}
                 {zoneStatus.map(row => eachrow(row, zoneStatus.indexOf(row)))}
             </div>

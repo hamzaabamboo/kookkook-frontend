@@ -51,3 +51,20 @@
     font-weight: $font-weight-regular;
     margin: 0;
 }
+
+a.dropdownItem {
+    padding: 0;
+}
+
+// div.dropdown-menu {
+//     border: none !important;
+//     min-width: 0 !important;
+// }
+
+:global {
+    .dropdown-menu {
+        border: none;
+        min-width: 0;
+        padding-top: 0;
+    }
+}

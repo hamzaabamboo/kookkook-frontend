@@ -7,9 +7,22 @@
 .textFormLabel {
     color: #828282;
     font-size: 1rem;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
 }
 
 ::placeholder {
-    color: rgba(189, 189, 189, 0.8);
+    font-size: 0.875rem;
+    font-weight: $font-weight-light;
+    color: #bdbdbd;
+}
+
+:global {
+    .form-control {
+        font-size: 0.875rem;
+        font-weight: $font-weight-light;
+        color: #bdbdbd;
+    }
+    option {
+        color: black;
+    }
 }

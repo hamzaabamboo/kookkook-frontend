@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import Row from 'react-bootstrap/Row';
+
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Dashboard from '../../components/Dashboard';
-import DeadChicken from '../../components/DeadChicken';
 import DailyData from '../../components/DailyData';
+import DeadChicken from '../../components/DeadChicken';
+import Row from 'react-bootstrap/Row';
+import Zone from '../../components/Zone';
 import styles from './index.module.scss';
+import { useHistory } from 'react-router-dom';
 
 const MainTabs = () => {
-    const [tab, setTab] = useState('dashboard');
+    const history = useHistory();
 
-    const renderSwitch = param => {
+    const renderSwitch = (param) => {
         switch (param) {
-            case 'dead-chicken':
+            case '/dead-chicken':
                 return <DeadChicken />;
-            case 'daily-data':
+            case '/daily-data':
                 return <DailyData />;
             default:
-                return <Dashboard />;
+                return <Zone />;
         }
     };
 
@@ -27,11 +29,11 @@ const MainTabs = () => {
                 <Col
                     xs={4}
                     className={
-                        tab === 'dashboard'
+                        history.location.pathname === '/zone'
                             ? `${styles.tabActive}`
                             : `${styles.tab}`
                     }
-                    onClick={() => setTab('dashboard')}
+                    onClick={() => history.push('/zone')}
                 >
                     <svg
                         width="125"
@@ -49,7 +51,7 @@ const MainTabs = () => {
                             x2="125"
                             y2="55"
                             className={
-                                tab === 'dashboard'
+                                history.location.pathname === '/zone'
                                     ? `${styles.lineHover}`
                                     : `${styles.line}`
                             }
@@ -59,11 +61,11 @@ const MainTabs = () => {
                 <Col
                     xs={4}
                     className={
-                        tab === 'dead-chicken'
+                        history.location.pathname === '/dead-chicken'
                             ? `${styles.tabActive}`
                             : `${styles.tab}`
                     }
-                    onClick={() => setTab('dead-chicken')}
+                    onClick={() => history.push('/dead-chicken')}
                 >
                     <svg
                         width="125"
@@ -78,7 +80,7 @@ const MainTabs = () => {
                             x2="125"
                             y2="55"
                             className={
-                                tab === 'dead-chicken'
+                                history.location.pathname === '/dead-chicken'
                                     ? `${styles.lineHover}`
                                     : `${styles.line}`
                             }
@@ -102,11 +104,11 @@ const MainTabs = () => {
                 <Col
                     xs={4}
                     className={
-                        tab === 'daily-data'
+                        history.location.pathname === '/daily-data'
                             ? `${styles.tabActive}`
                             : `${styles.tab}`
                     }
-                    onClick={() => setTab('daily-data')}
+                    onClick={() => history.push('/daily-data')}
                 >
                     <svg
                         width="125"
@@ -121,7 +123,7 @@ const MainTabs = () => {
                             x2="125"
                             y2="55"
                             className={
-                                tab === 'daily-data'
+                                history.location.pathname === '/daily-data'
                                     ? `${styles.lineHover}`
                                     : `${styles.line}`
                             }
@@ -135,7 +137,7 @@ const MainTabs = () => {
                     </svg>
                 </Col>
             </Row>
-            <div>{renderSwitch(tab)}</div>
+            <div>{renderSwitch(history.location.pathname)}</div>
         </Container>
     );
 };

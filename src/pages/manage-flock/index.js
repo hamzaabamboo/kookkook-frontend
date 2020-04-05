@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
-import styles from './index.module.scss';
+
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import styles from './index.module.scss';
+
 // import Dropdown from 'react-bootstrap/Dropdown';
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const ManageFlock = () => {
+    const createNewFlock = () => {
+        return {
+            flockName,
+            chickenInDate,
+            chickenOutDate,
+            house,
+            amountOfChickens,
+            gender,
+            chickenType,
+        };
+    };
     const [flockName, setFlockName] = useState();
     const [chickenInDate, setChickenInDate] = useState();
+    const [chickenOutDate, setChickenOutDate] = useState();
     const [house, setHouse] = useState();
     const [amountOfChickens, setAmountOfChickens] = useState();
     const [gender, setGender] = useState();
@@ -30,12 +44,24 @@ const ManageFlock = () => {
 
                 <Form.Group controlId="formChickenInDate">
                     <Form.Label className={styles.textFormLabel}>
-                        Chicken in date
+                        Chicken In Date
                     </Form.Label>
                     <Form.Control
                         type="date"
                         onChange={e => setChickenInDate(e.target.value)}
                         value={chickenInDate}
+                        placeholder="DD/MM/YY"
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="formChickenOutDate">
+                    <Form.Label className={styles.textFormLabel}>
+                        Chicken Out Date
+                    </Form.Label>
+                    <Form.Control
+                        type="date"
+                        onChange={e => setChickenOutDate(e.target.value)}
+                        value={chickenOutDate}
                         placeholder="DD/MM/YY"
                     />
                 </Form.Group>
@@ -61,7 +87,11 @@ const ManageFlock = () => {
                         onSelect={e => setHouse(e.target.value)}
                         value={house}
                         custom
+                        required
                     >
+                        <option disabled selected hidden>
+                            Select House
+                        </option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -92,6 +122,9 @@ const ManageFlock = () => {
                         value={gender}
                         custom
                     >
+                        <option disabled selected hidden>
+                            Select Gender
+                        </option>
                         <option>Male</option>
                         <option>Female</option>
                     </Form.Control>
@@ -107,6 +140,9 @@ const ManageFlock = () => {
                         value={chickenType}
                         custom
                     >
+                        <option disabled selected hidden>
+                            Select Chicken Type
+                        </option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -116,10 +152,11 @@ const ManageFlock = () => {
                 </Form.Group>
             </Form>
             <Button
-                className="btn-login d-flex mx-auto mt-5 px-4 mb-2"
+                className="d-flex mx-auto mt-5 w-100 mb-2 justify-content-center"
                 type="button"
+                // onClick={() => createNewFlock()}
             >
-                <div className="text-btn">Create New Flock</div>
+                <div>Add New Flock</div>
             </Button>
         </Container>
     );

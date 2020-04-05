@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Row from 'react-bootstrap/Row';
+
 import Col from 'react-bootstrap/Col';
-import styles from './index.module.scss';
-import upArrow from '../../static/icon/up_arrow.svg';
-import tempIcon from '../../static/icon/temperature.svg';
-import windIcon from '../../static/icon/wind.svg';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import ammoniaIcon from '../../static/icon/fog.svg';
 import humidityIcon from '../../static/icon/humidity.svg';
-import Container from 'react-bootstrap/Container';
 import io from 'socket.io-client';
+import styles from './index.module.scss';
+import tempIcon from '../../static/icon/temperature.svg';
+import upArrow from '../../static/icon/up_arrow.svg';
+import { useHistory } from 'react-router-dom';
+import windIcon from '../../static/icon/wind.svg';
 
 const socket = io(
     'http://kookkook-backend-dev-ingress.default.202.28.193.100.xip.io/',
@@ -26,7 +27,7 @@ const Dashboard = () => {
     const history = useHistory();
 
     useEffect(() => {
-        socket.on('pipeRealtimeData', result => {
+        socket.on('pipeRealtimeData', (result) => {
             setTemp(Math.round(result.temperature));
             setAmmonia(Math.round(result.ammonia));
             setHumidity(Math.round(result.humidity));
@@ -111,16 +112,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div
-                className={`${styles.bgHouse} mt-4 mb-3 mx-auto d-flex p-2 justify-content-center`}
-            >
-                <div
-                    className={`${styles.textHouse} text-center align-self-center`}
-                >
-                    HOUSE A
-                </div>
-            </div>
-            <Container>
+            <Container className="mt-4">
                 <Row>
                     {data.map((data, index) => (
                         <Col
@@ -138,8 +130,8 @@ const Dashboard = () => {
                                     <p
                                         className={`m-0 ${
                                             compareTemp
-                                                ? 'text-record'
-                                                : 'text-irregular'
+                                                ? `${styles.textRecord}`
+                                                : `${styles.textIrregular}`
                                         }`}
                                     >
                                         {data.result}

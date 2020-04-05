@@ -1,163 +1,141 @@
+import * as ChartAnnotation from 'chartjs-plugin-annotation';
+
 import React, { useState } from 'react';
-// import Chart from 'chart.js';
-import './index.module.scss';
+
 import { Bar } from 'react-chartjs-2';
+import Container from 'react-bootstrap/Container';
 import LeftArr from '../../static/icon/left_arr.svg';
 import RightArr from '../../static/icon/right_arr.svg';
-
-const chartData = {
-    labels: ['S', 'M', 'T', 'W', 'TH', 'F', 'S'],
-    datasets: [
-        {
-            data: [50, 30, 40, 25, 35, 45, 0],
-            backgroundColor: 'rgba(254, 206, 71, 1)',
-            barThickness: 19,
-        },
-    ],
-};
+import moment from 'moment';
+// import Chart from 'chart.js';
+import styles from './index.module.scss';
 
 const WeeklyChart = () => {
-    const month = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'June',
-        'July',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-    ];
+    const [day, setDay] = useState(moment());
 
-    // const date = ['1-7', '8-14', '15-21', '22-28'];
-    const year = '2020';
-    const [startDate, setStartDate] = useState(1);
-    const [endDate, setEndDate] = useState(7);
+    const chartData = {
+        labels: ['S', 'M', 'T', 'W', 'TH', 'F', 'S'],
+        datasets: [
+            {
+                label: 'max',
+                data: [50, 30, 40, 25, 35, 45, 0].map(
+                    number => Math.random() * 50,
+                ),
+                backgroundColor: 'rgba(254, 206, 71, 1)',
+                barThickness: 19,
+            },
+            {
+                label: 'min',
+                data: [50, 30, 40, 25, 35, 45, 0].map(
+                    number => Math.random() * 50,
+                ),
+                backgroundColor: 'rgba(46, 134, 171, 1)',
+                barThickness: 19,
+            },
+        ],
+    };
 
-    // const incrementStartDate = () => {
-    //     setStartDate(startDate + 1);
-    // };
-
-    // const incrementEndDate = () => {
-    //     setEndDate(endDate + 1);
-    // };
-    // const [chartData, setData] = useState({
-    //   labels: ["S", "M", "T", "W", "TH", "F", "S"],
-    //   datasets: [
-    //     {
-    //       label: "temperature",
-    //       data: [50, 30, 40, 25, 35, 45, 0],
-    //       backgroundColor: "rgba(254, 206, 71, 1)"
-    //     }
-    //   ]
-    // });
-    // const Chart = require('chart.js');
-    // const ctx = document.getElementById('barChart');
-    // const barChart = new Chart(ctx, {
-    //     type: 'bar',
-    //     data: {
-    //         labels: ['S', 'M', 'T', 'W', 'TH', 'F', 'S'],
-    //         datasets: [
-    //             {
-    //                 data: [50, 30, 40, 25, 35, 45, 0],
-    //                 backgroundColor: 'rgba(254, 206, 71, 1)',
-    //                 barThickness: 19,
-    //             },
-    //         ],
-    //     },
-    //     options: {
-    //         scales: {
-    //             xAxes: [
-    //                 {
-    //                     display: false,
-    //                     gridLines: {
-    //                         display: false,
-    //                         drawOnChartArea: false,
-    //                         color: 'rgba(0, 0, 0, 0)',
-    //                     },
-    //                 },
-    //             ],
-    //             yAxes: [
-    //                 {
-    //                     display: false,
-    //                     gridLines: {
-    //                         display: false,
-    //                         drawOnChartArea: false,
-    //                         color: 'rgba(0, 0, 0, 0)',
-    //                     },
-    //                 },
-    //             ],
-    //         },
-    //     },
-    // });
+    const findAvg = () => {
+        const findSum = chartData.datasets.map(data => {
+            return data.data.reduce((accumulator, currentValue) => {
+                return accumulator + currentValue;
+            }, 0);
+        });
+        const arrLength = chartData.datasets.map(data => {
+            return data.data.length;
+        });
+        return findSum / arrLength;
+    };
 
     return (
-        <div>
-            <div>
-                <Bar
-                    data={chartData}
-                    width={124}
-                    height={264}
-                    options={{
-                        maintainAspectRatio: false,
-                        cornerRadius: 8,
-                        label: {
-                            display: false,
+        <Container>
+            <Bar
+                data={chartData}
+                width={124}
+                height={150}
+                options={{
+                    maintainAspectRatio: false,
+                    cornerRadius: 8,
+                    label: {
+                        display: false,
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: '#2E86AB',
+                            fontFamily: 'Airbnb Cereal App',
                         },
-                        scales: {
-                            xAxes: [
-                                {
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                type: 'category',
+                                gridLines: {
                                     display: false,
-                                    gridLines: {
-                                        display: false,
-                                        drawOnChartArea: false,
-                                        color: 'rgba(0, 0, 0, 0)',
-                                    },
+                                    drawBorder: false,
                                 },
-                            ],
-                            yAxes: [
-                                {
+                            },
+                        ],
+                        yAxes: [
+                            {
+                                ticks: {
                                     display: false,
-                                    gridLines: {
-                                        display: false,
-                                        drawOnChartArea: false,
-                                        color: 'rgba(0, 0, 0, 0)',
-                                    },
                                 },
-                            ],
-                        },
-                    }}
-                />
-            </div>
-            {/* <canvas id="barChart" width="400" height="400"></canvas> */}
+                                gridLines: {
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    color: 'rgba(0, 0, 0, 0)',
+                                },
+                            },
+                        ],
+                    },
+                    annotation: {
+                        annotations: [
+                            {
+                                type: 'line',
+                                mode: 'horizontal',
+                                scaleID: 'y-axis-0',
+                                value: findAvg(),
+                                borderColor: 'rgb(58, 175, 174)',
+                                borderWidth: 2,
+                                borderDash: [2, 2],
+                                label: {
+                                    enabled: true,
+                                    backgroundColor: 'rgba(0,0,0,0)',
+                                    fontFamily: 'Airbnb Cereal App',
+                                    fontSize: 8,
+                                    fontColor: '#3AAFAE',
+                                    position: 'right',
+                                    yAdjust: -8,
+                                    content: 'avg',
+                                },
+                            },
+                        ],
+                    },
+                }}
+            />
 
             <div className="pagination-week d-flex justify-content-center align-items-center">
                 <img
                     src={LeftArr}
                     alt="left_arr"
                     onClick={() => {
-                        setStartDate(startDate - 7);
-                        setEndDate(endDate - 7);
+                        setDay(day => day.clone().subtract(7, 'days'));
                     }}
                 />
-                <div className="text-date ml-1">{startDate}</div>
-                <div className="text-date mx-1">-</div>
-                <div className="text-date">{endDate}</div>
-                <div className="text-date mx-1">{month[0]}</div>
-                <div className="text-date mr-1">{year}</div>
+                <div className={`${styles.textDate} mx-2`}>
+                    {day.startOf('week').format('DD MMM YYYY')} {` - `}
+                    {day.endOf('week').format('DD MMM YYYY')}
+                </div>
                 <img
                     src={RightArr}
                     alt="right_arr"
                     onClick={() => {
-                        setStartDate(startDate + 7);
-                        setEndDate(endDate + 7);
+                        setDay(day => day.clone().add(7, 'days'));
                     }}
                 />
             </div>
-        </div>
+        </Container>
     );
 };
 
