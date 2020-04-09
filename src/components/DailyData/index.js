@@ -42,13 +42,10 @@ const DailyData = () => {
       </div>
 
       <div className="d-flex justify-content-around">
-        <Button variant="backButton" type="button" className={styles.btnBack}> Back </Button>
-        <Button variant="submitButton" type="button" className={styles.btnSubmit} > Submit </Button>
+        <Button variant="viewHistoryBtn" type="button" className={styles.btnViewHistory}> View History </Button>
+        <Button variant="sendBtn" type="button" className={styles.btnSend} > Send </Button>
       </div>
 
-      <div className="d-flex justify-content-around">
-        <Button variant="viewHistoryButton" type="button" className="btn-history"> VIEW HISTORY </Button>
-      </div>
     </Container >
   );
 

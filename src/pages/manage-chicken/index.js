@@ -6,8 +6,12 @@ import ChickenIcon from '../../static/icon/chicken-manage.svg';
 import Container from 'react-bootstrap/Container';
 import DeleteBtn from '../../static/icon/deleteBtn.svg';
 import DeleteTab from '../../static/icon/delete.svg';
+<<<<<<< Updated upstream
 import Dropdown from 'react-bootstrap/Dropdown';
 import MyVerticallyCenteredModal from '../../components/ConfirmationMsg/index.js';
+=======
+import Form from 'react-bootstrap/Form';
+>>>>>>> Stashed changes
 import NextArrow from '../../static/icon/next_manage.svg';
 import styles from './index.module.scss';
 import { useHistory } from 'react-router-dom';
@@ -30,6 +34,9 @@ const CustomCard = ({ data, onDelete }) => {
     const history = useHistory();
     const manageHouse = () => {
         history.push('/manage-flock');
+    };
+    const showHouseData = () => {
+        history.push('/show-house-data');
     };
     const showDeleteBtn = () => {
         return <img src={DeleteBtn} alt="delete_btn" />;
@@ -158,17 +165,80 @@ const ManageChicken = () => {
                 }}
             />
             <Container className={`${styles.bgLightBlue} vh-100 pt-3`}>
+<<<<<<< Updated upstream
                 {data.map(item => (
                     <CustomCard
                         key={item.id}
                         data={item}
                         onDelete={() => setToDelete(item.id)}
                     />
+=======
+                {data.map((data, index) => (
+                    <div className={`${styles.bgCard} p-3 mb-3`}>
+                        <div className="d-flex justify-content-between">
+                            <div className={styles.textFlockGen}>
+                                {data.generation}
+                            </div>
+                            <div className="d-flex flex-column">
+                                <img
+                                    src={DeleteTab}
+                                    alt="delete_tab"
+                                    onClick={() => {
+                                        deleteTab
+                                            ? setDeleteTab(false)
+                                            : setDeleteTab(true);
+                                    }}
+                                />
+                                <div>{deleteTab ? showDeleteBtn() : null}</div>
+                            </div>
+                        </div>
+                        <p className={styles.textDate}>{data.date}</p>
+                        <div className="d-flex">
+                            <div className={`${styles.containerDay} px-2 mr-1`}>
+                                <p className={styles.textContainer}>
+                                    {data.age} Days
+                                </p>
+                            </div>
+                            <div
+                                className={`${styles.containerGender} px-2 mr-1`}
+                            >
+                                <p className={styles.textContainer}>
+                                    {data.gender}
+                                </p>
+                            </div>
+                            <div className={styles.containerType}>
+                                <p className={styles.textContainer}>
+                                    {data.type}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="d-flex mt-2 justify-content-between">
+                            <div className="d-flex align-items-center">
+                                <img src={BarnIcon} alt="barn_icon" />
+                                <p className={`${styles.textDetail} ml-2`}>
+                                    House 1
+                                </p>
+                            </div>
+                            <div className="d-flex">
+                                <img src={ChickenIcon} alt="chicken_icon" />
+                                <p className={`${styles.textDetail} ml-2`}>
+                                    112 Chickens
+                                </p>
+                            </div>
+                            <img
+                                src={NextArrow}
+                                alt="next_arrow"
+                                onClick={() => showHouseData()}
+                            />
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
                 ))}
                 <img
                     className="d-block ml-auto mt-5"
                     src={AddBtn}
                     alt="add_btn"
+<<<<<<< Updated upstream
                     onClick={() => {
                         createCard({
                             id: 4,
@@ -179,6 +249,9 @@ const ManageChicken = () => {
                             type: 'chicken type',
                         });
                     }}
+=======
+                    onClick={() => manageHouse()}
+>>>>>>> Stashed changes
                 />
             </Container>
         </div>

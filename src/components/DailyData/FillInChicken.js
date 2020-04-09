@@ -13,12 +13,20 @@ export const FillInChicken = () => {
         <div>
             <h4>UNQUALIFIED CHICKEN</h4>
 
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">Morning</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Evening</a></li>
+                </ul>
+            </nav>
+
             <Form.Group controlId="formDeadChicken">
                 <Form.Label className={styles.numDeadChicken} > Number of Dead Chickens </Form.Label>
                 <Form.Control
                     type="text"
                     onChange={e => setDeadChicken(e.target.value)}
                     value={deadChicken}
+                    placeholder="Input"
                 />
             </Form.Group>
 
@@ -28,6 +36,7 @@ export const FillInChicken = () => {
                     type="text"
                     onChange={e => setZLegChicken(e.target.value)}
                     value={zLegChicken}
+                    placeholder="Input"
                 />
             </Form.Group>
 
@@ -37,6 +46,7 @@ export const FillInChicken = () => {
                     type="text"
                     onChange={e => setDwarfChicken(e.target.value)}
                     value={dwarfChicken}
+                    placeholder="Input"
                 />
             </Form.Group>
 
@@ -46,6 +56,7 @@ export const FillInChicken = () => {
                     type="text"
                     onChange={e => setSickChicken(e.target.value)}
                     value={sickChicken}
+                    placeholder="Input"
                 />
             </Form.Group>
         </div>

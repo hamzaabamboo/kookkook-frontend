@@ -35,7 +35,7 @@ export const FillInMedicine = ({
                     </div>
                 );
             })}
-            <hr className="solid" />
+            <hr className={styles.solid} />
             <h6>VITAMIN</h6>
             {Object.keys(vitamin).map((eachVitaminType, index) => {
                 return (

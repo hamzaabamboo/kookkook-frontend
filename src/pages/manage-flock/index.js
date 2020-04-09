@@ -4,7 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import styles from './index.module.scss';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 // import Dropdown from 'react-bootstrap/Dropdown';
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 

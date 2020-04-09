@@ -22,10 +22,12 @@ const vitaminType = [
 ];
 
 export const FillInConsumption = () => {
-    const [foodIn, setFoodIn] = useState();
-    const [foodLeft, setFoodLeft] = useState();
-    const [waterMeter1, setWaterMeter1] = useState();
-    const [waterMeter2, setWaterMeter2] = useState();
+    const [foodIn1, setFoodIn1] = useState();
+    const [foodLeft1, setFoodLeft1] = useState();
+    const [foodIn2, setFoodIn2] = useState();
+    const [foodLeft2, setFoodLeft2] = useState();
+    const [waterV1, setWaterV1] = useState();
+    const [waterV2, setWaterV2] = useState();
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
@@ -75,54 +77,83 @@ export const FillInConsumption = () => {
             <Form className="form">
                 <div>
                     <h4>FOOD CONSUMPTION</h4>
-                    <Form.Group controlId="formFoodIn">
+                    <Form.Group controlId="formFoodIn1">
                         <Form.Label className={styles.foodIn}>
                             {' '}
-                            Amount of Food Put In{' '}
+                            Amount of Food Put In (Silo1) {' '}
                         </Form.Label>
                         <Form.Control
                             type="text"
-                            onChange={e => setFoodIn(e.target.value)}
-                            value={foodIn}
+                            onChange={e => setFoodIn1(e.target.value)}
+                            value={foodIn1}
+                            placeholder="Input"
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="formFoodLeft">
+                    <Form.Group controlId="formFoodLeft1">
                         <Form.Label className={styles.foodLeft}>
                             {' '}
-                            Amount of Food Left{' '}
+                            Amount of Food Left (Silo1) {' '}
                         </Form.Label>
                         <Form.Control
                             type="text"
-                            onChange={e => setFoodLeft(e.target.value)}
-                            value={foodLeft}
+                            onChange={e => setFoodLeft1(e.target.value)}
+                            value={foodLeft1}
+                            placeholder="Input"
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formFoodIn2">
+                        <Form.Label className={styles.foodIn}>
+                            {' '}
+                            Amount of Food Put In (Silo2) {' '}
+                        </Form.Label>
+                        <Form.Control
+                            type="text"
+                            onChange={e => setFoodIn2(e.target.value)}
+                            value={foodIn2}
+                            placeholder="Input"
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="formFoodLeft2">
+                        <Form.Label className={styles.foodLeft}>
+                            {' '}
+                            Amount of Food Left (Silo2) {' '}
+                        </Form.Label>
+                        <Form.Control
+                            type="text"
+                            onChange={e => setFoodLeft2(e.target.value)}
+                            value={foodLeft2}
+                            placeholder="Input"
                         />
                     </Form.Group>
                 </div>
 
                 <div>
                     <h4>WATER CONSUMPTION</h4>
-                    <Form.Group controlId="formWaterMeter1">
-                        <Form.Label className={styles.waterMeter1}>
+                    <Form.Group controlId="formWaterV1">
+                        <Form.Label className={styles.waterV1}>
                             {' '}
-                            Water Meter 1{' '}
+                            Water Valve 1 {' '}
                         </Form.Label>
                         <Form.Control
                             type="text"
-                            onChange={e => setWaterMeter1(e.target.value)}
-                            value={waterMeter1}
+                            onChange={e => setWaterV1(e.target.value)}
+                            value={waterV1}
+                            placeholder="Input"
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="formWaterMeter2">
-                        <Form.Label className={styles.waterMeter2}>
+                    <Form.Group controlId="formWaterV2">
+                        <Form.Label className={styles.waterV2}>
                             {' '}
-                            Water Meter 2{' '}
+                            Water Valve 2 {' '}
                         </Form.Label>
                         <Form.Control
                             type="double"
-                            onChange={e => setWaterMeter2(e.target.value)}
-                            value={waterMeter2}
+                            onChange={e => setWaterV2(e.target.value)}
+                            value={waterV2}
+                            placeholder="Input"
                         />
                     </Form.Group>
                 </div>
@@ -162,25 +193,23 @@ export const FillInConsumption = () => {
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
+                        </div>
+                        <div>
                             {Object.keys(chosenMedicine).map(eachMedType => {
                                 return (
                                     <form
-                                        className="form-inline"
+                                        className="formPop"
                                         key={eachMedType}
                                     >
                                         <div>
                                             <label
-                                                for="Name"
-                                                className={styles.fromCheckbox}
-                                            ></label>
-                                            <input
                                                 type="text"
                                                 readonly
-                                                className="form-control-plaintext"
-                                                value={eachMedType}
-                                            />
+                                                className="form-control-plaintext" >
+                                                {eachMedType}
+                                            </label>
                                         </div>
-                                        <div className="form-group mx-sm-3 mb-2">
+                                        <div className="form-group mx-sm-3 mb-2 d-flex justify-content-between">
                                             <label
                                                 for="inputAmountMedicine"
                                                 className="sr-only"
@@ -199,11 +228,11 @@ export const FillInConsumption = () => {
                                                     );
                                                 }}
                                             />
+                                            <img
+                                                src={deleteMedicineBtn}
+                                                onClick={() => true}
+                                            />
                                         </div>
-                                        <img
-                                            src={deleteMedicineBtn}
-                                            onClick={() => true}
-                                        />
                                     </form>
                                 );
                             })}

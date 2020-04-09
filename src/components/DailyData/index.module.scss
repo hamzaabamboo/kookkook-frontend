@@ -11,14 +11,14 @@ h4{
     color: #828282;
 }
 
-.btnBack{
+.btnViewHistory{
     border: 2px solid $theme-yellow-color;
     color: $theme-yellow-color;
-    width: 100px;
+    width: 130px;
     height: 38px;
 }
 
-.btnSubmit{
+.btnSend{
     background-color: $theme-yellow-color;
     width: 100px;
     height: 38px;
@@ -73,6 +73,10 @@ h4{
 
 hr.solid {
     border-top: 2px solid #999;
+}
+
+.formPop {
+    margin-top: 0.5rem;
 }
 
 //Fill in chickens
