@@ -20,7 +20,7 @@ const Nav = () => {
 
     const getTitle = () => {
         switch (history.location.pathname) {
-            case '/zone':
+            case '/dashbaord':
                 return 'Dashboard';
             case '/dead-chicken':
                 return 'Dead Chicken';

@@ -11,8 +11,6 @@ function App() {
     return (
         <Store>
             <AppRouter />
-            <Dashboard />
-            <Zone />
         </Store>
     );
 }

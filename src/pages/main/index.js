@@ -4,24 +4,14 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import DailyData from '../../components/DailyData';
 import DeadChicken from '../../components/DeadChicken';
+
 import Row from 'react-bootstrap/Row';
-import Zone from '../../components/Zone';
+import Dashboard from '../../components/Dashboard';
 import styles from './index.module.scss';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Switch, Route } from 'react-router-dom';
 
 const MainTabs = () => {
     const history = useHistory();
-
-    const renderSwitch = (param) => {
-        switch (param) {
-            case '/dead-chicken':
-                return <DeadChicken />;
-            case '/daily-data':
-                return <DailyData />;
-            default:
-                return <Zone />;
-        }
-    };
 
     return (
         <Container
@@ -32,11 +22,11 @@ const MainTabs = () => {
                 <Col
                     xs={4}
                     className={
-                        history.location.pathname === '/zone'
+                        history.location.pathname.split('/')[1] === 'dashboard'
                             ? `${styles.tabActive}`
                             : `${styles.tab}`
                     }
-                    onClick={() => history.push('/zone')}
+                    onClick={() => history.push('/dashboard')}
                 >
                     <svg
                         width="125"
@@ -54,7 +44,8 @@ const MainTabs = () => {
                             x2="125"
                             y2="55"
                             className={
-                                history.location.pathname === '/zone'
+                                history.location.pathname.split('/')[1] ===
+                                'dashboard'
                                     ? `${styles.lineHover}`
                                     : `${styles.line}`
                             }
@@ -140,7 +131,17 @@ const MainTabs = () => {
                     </svg>
                 </Col>
             </Row>
-            <div>{renderSwitch(history.location.pathname)}</div>
+            <Switch>
+                <Route path="/dead-chicken">
+                    <DeadChicken />
+                </Route>
+                <Route path="/daily-data">
+                    <DailyData />
+                </Route>
+                <Route>
+                    <Dashboard />
+                </Route>
+            </Switch>
         </Container>
     );
 };
