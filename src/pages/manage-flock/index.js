@@ -4,12 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import styles from './index.module.scss';
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const ManageFlock = () => {
     const createNewFlock = () => {
@@ -39,7 +33,7 @@ const ManageFlock = () => {
                     </Form.Label>
                     <Form.Control
                         type="text"
-                        onChange={e => setFlockName(e.target.value)}
+                        onChange={(e) => setFlockName(e.target.value)}
                         value={flockName}
                         placeholder="ex: 2020/1"
                     />
@@ -51,7 +45,7 @@ const ManageFlock = () => {
                     </Form.Label>
                     <Form.Control
                         type="date"
-                        onChange={e => setChickenInDate(e.target.value)}
+                        onChange={(e) => setChickenInDate(e.target.value)}
                         value={chickenInDate}
                         placeholder="DD/MM/YY"
                     />
@@ -63,7 +57,7 @@ const ManageFlock = () => {
                     </Form.Label>
                     <Form.Control
                         type="date"
-                        onChange={e => setChickenOutDate(e.target.value)}
+                        onChange={(e) => setChickenOutDate(e.target.value)}
                         value={chickenOutDate}
                         placeholder="DD/MM/YY"
                     />
@@ -87,7 +81,7 @@ const ManageFlock = () => {
                     </DropdownButton> */}
                     <Form.Control
                         as="select"
-                        onSelect={e => setHouse(e.target.value)}
+                        onSelect={(e) => setHouse(e.target.value)}
                         value={house}
                         custom
                         required
@@ -109,7 +103,7 @@ const ManageFlock = () => {
                     </Form.Label>
                     <Form.Control
                         type="text"
-                        onChange={e => setAmountOfChickens(e.target.value)}
+                        onChange={(e) => setAmountOfChickens(e.target.value)}
                         value={amountOfChickens}
                         placeholder="ex:112"
                     />
@@ -121,7 +115,7 @@ const ManageFlock = () => {
                     </Form.Label>
                     <Form.Control
                         as="select"
-                        onSelect={e => setGender(e.target.value)}
+                        onSelect={(e) => setGender(e.target.value)}
                         value={gender}
                         custom
                     >
@@ -139,7 +133,7 @@ const ManageFlock = () => {
                     </Form.Label>
                     <Form.Control
                         as="select"
-                        onSelect={e => setChickenType(e.target.value)}
+                        onSelect={(e) => setChickenType(e.target.value)}
                         value={chickenType}
                         custom
                     >

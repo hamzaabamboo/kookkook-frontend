@@ -5,3 +5,47 @@
     font-size: 0.75rem;
     font-weight: $font-weight-bold;
 }
+
+#btnDropdown {
+    color: black;
+    font-size: 0.75rem;
+    font-weight: $font-weight-light;
+    // padding: 0;
+    // width: fit-content;
+}
+
+.border {
+    border: 1px solid rgba(185, 185, 185, 0.65);
+}
+
+.textEnviTitle {
+    color: black;
+    font-size: 1rem;
+    font-weight: $font-weight-medium;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+}
+
+.textFullDate {
+    color: #737272;
+    font-size: 0.75rem;
+    font-weight: $font-weight-regular;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+}
+
+.textValue {
+    color: black;
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+    line-height: 42px;
+    letter-spacing: 0.02em;
+}
+
+.textTime {
+    color: #6d6d6d;
+    font-size: 0.5rem;
+    font-weight: $font-weight-medium;
+    line-height: 11px;
+    letter-spacing: 0.03em;
+}

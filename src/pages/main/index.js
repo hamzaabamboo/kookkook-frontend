@@ -24,7 +24,10 @@ const MainTabs = () => {
     };
 
     return (
-        <Container fluid className={`${styles.bgLightBlue} vh-100`}>
+        <Container
+            className={`${styles.bgLightBlue}`}
+            styles="height: calc(100vh - 56px)"
+        >
             <Row>
                 <Col
                     xs={4}

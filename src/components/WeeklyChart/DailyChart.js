@@ -1,56 +1,119 @@
 import React, { useState } from 'react';
 
-import { Bar } from 'react-chartjs-2';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import LeftArr from '../../static/icon/left_arr.svg';
+import { Line } from 'react-chartjs-2';
 import RightArr from '../../static/icon/right_arr.svg';
 import moment from 'moment';
 import styles from './index.module.scss';
 
-const customTooltips = (tooltip) => {
-    tooltip.backgroundColor = '#FFF';
-    tooltip.mode = 'index';
-    tooltip.intersect = true;
-    tooltip.yPadding = 10;
-    tooltip.xPadding = 10;
-    tooltip.caretSize = 4;
-    tooltip.bodyFontColor = '#5A5A5A';
-    tooltip.borderColor = '#CECED0';
-    tooltip.borderWidth = 0.05;
-    tooltip.cornerRadius = 0;
-    tooltip.displayColors = false;
-};
-
-const WeeklyChart = () => {
+const DailyChart = () => {
     const [day, setDay] = useState(moment());
-    const weeklyLabel = ['S', 'M', 'T', 'W', 'TH', 'F', 'S'];
-    const dailyLabel = ['00', '06', '12', '18', '24'];
-
-    const canAddWeek = (day) => {
-        return !(
-            day.clone().add(7, 'days').diff(moment().endOf('week'), 'days') > 0
-        );
-    };
 
     const chartData = {
-        labels: ['S', 'M', 'T', 'W', 'TH', 'F', 'S'],
         datasets: [
             {
-                label: 'MAX',
-                data: [50, 30, 40, 25, 35, 45, 0].map(
-                    (number) => Math.random() * 50,
-                ),
+                data: [
+                    {
+                        t: day.toDate(),
+                        y: Math.random(),
+                    },
+                    {
+                        t: day.clone().subtract(1, 'hour').toDate(),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date(),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                    {
+                        t: new Date('2015-4-25 14:12'),
+                        y: Math.random(),
+                    },
+                ],
                 backgroundColor: 'rgba(254, 206, 71, 1)',
-                barThickness: 19,
-            },
-            {
-                label: 'MIN',
-                data: [50, 30, 40, 25, 35, 45, 0].map(
-                    (number) => Math.random() * 50,
-                ),
-                backgroundColor: 'rgba(58, 175, 174, 1)',
                 barThickness: 19,
             },
         ],
@@ -106,7 +169,7 @@ const WeeklyChart = () => {
                     </Dropdown.Item>
                 </DropdownButton>
             </div>
-            <Bar
+            <Line
                 data={chartData}
                 width={124}
                 height={150}
@@ -117,16 +180,16 @@ const WeeklyChart = () => {
                         display: false,
                     },
                     legend: {
-                        display: true,
-                        labels: {
-                            fontColor: '#2E86AB',
-                            fontFamily: 'Airbnb Cereal App',
-                        },
+                        display: false,
                     },
                     scales: {
                         xAxes: [
                             {
-                                type: 'category',
+                                type: 'time',
+                                time: {
+                                    unit: 'hour',
+                                },
+                                distribution: 'series',
                                 gridLines: {
                                     display: false,
                                     drawBorder: false,
@@ -183,15 +246,6 @@ const WeeklyChart = () => {
                                     Math.round(tooltipItem.yLabel * 100) / 100;
                                 return label;
                             },
-                            // labelColor: function (tooltipItem, chart) {
-                            //     return {
-                            //         borderColor: 'rgb(255, 0, 0)',
-                            //         backgroundColor: 'rgb(255, 0, 0)',
-                            //     };
-                            // },
-                            // labelTextColor: function (tooltipItem, chart) {
-                            //     return '#3AAFAE';
-                            // },
                         },
                     },
                 }}
@@ -206,15 +260,13 @@ const WeeklyChart = () => {
                     }}
                 />
                 <div className={`${styles.textDate} mx-2`}>
-                    {day.startOf('week').format('DD MMM YYYY')} {` - `}
-                    {day.endOf('week').format('DD MMM YYYY')}
+                    {day.format('DD MMM YYYY')}
                 </div>
                 <img
                     src={RightArr}
                     alt="right_arr"
                     onClick={() => {
-                        if (canAddWeek(day))
-                            setDay((day) => day.clone().add(7, 'days'));
+                        setDay((day) => day.clone().add(7, 'days'));
                     }}
                 />
             </div>
@@ -222,4 +274,4 @@ const WeeklyChart = () => {
     );
 };
 
-export default WeeklyChart;
+export default DailyChart;

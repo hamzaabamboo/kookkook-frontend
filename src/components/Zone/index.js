@@ -1,90 +1,136 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
-import Chart from '../WeeklyChart';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Dashboard from '../Dashboard';
+import { Context } from '../../Store';
+import Row from 'react-bootstrap/Row';
+import ammoniaIcon from '../../static/icon/fog.svg';
+import humidityIcon from '../../static/icon/humidity.svg';
 import styles from './index.module.scss';
-import { useHistory } from 'react-router-dom';
+import tempIcon from '../../static/icon/temperature.svg';
+import upArrow from '../../static/icon/up_arrow.svg';
+import windIcon from '../../static/icon/wind.svg';
 
-const ZoneBlock = ({ isCurrent, zone, onClick }) => {
-    return (
-        <div
-            className={`mr-2 mb-2 d-flex justify-content-center ${
-                styles.bgBlock
-            } ${
-                isCurrent
-                    ? `${styles.bgSelect}`
-                    : zone.irregular
-                    ? `${styles.bgIrregular}`
-                    : ``
-            }`}
-            onClick={() => onClick()}
-        >
-            <p
-                className={`m-0 align-items-center d-flex ${styles.textZoneNum}`}
-            >
-                {zone.id}
-            </p>
-        </div>
-    );
-};
+const Zone = ({ currentZone, onPropertySelected }) => {
+    const { state } = useContext(Context);
+    const zoneData = state.zones[currentZone - 1];
+    console.log('+++++++zoneData++++++++');
+    console.log(currentZone);
+    // const enviData = zoneData.environmentalData;
+    // const isIrregular = (property) => {
+    //     zoneData.irregularEnv.includes(property);
+    // };
 
-const Zone = () => {
-    const history = useHistory();
-    const renderSwitch = (param) => {
-        switch (param) {
-            case '/chart':
-                return <Chart />;
-            default:
-                return <Dashboard />;
-        }
-    };
-
-    const zones = [
-        { id: 1, irregular: false },
-        { id: 2, irregular: false },
-        { id: 3, irregular: false },
-        { id: 4, irregular: true },
-        { id: 5, irregular: false },
-        { id: 6, irregular: true },
+    const data = [
+        {
+            result: 3,
+            property: 'temperature',
+            unit: 'CELSIUS',
+            percentage: '11.5%',
+            measure: 'TEMPERATURE',
+            enviIcon: tempIcon,
+            alt: 'temp_icon',
+            sensor: 'X',
+            url: 'temp',
+        },
+        {
+            result: 3,
+            property: 'windspeed',
+            unit: 'KM/HR',
+            percentage: '11.5%',
+            measure: 'WIND',
+            enviIcon: windIcon,
+            alt: 'wind_icon',
+            sensor: 'Y',
+            url: 'temp',
+        },
+        {
+            result: 3,
+            property: 'ammonia',
+            unit: '',
+            percentage: '11.5%',
+            measure: 'AMMONIA',
+            enviIcon: ammoniaIcon,
+            alt: 'ammonia_icon',
+            sensor: 'Z',
+            url: 'temp',
+        },
+        {
+            result: 3,
+            property: 'humidity',
+            unit: '',
+            percentage: '11.5%',
+            measure: 'HUMIDITY',
+            enviIcon: humidityIcon,
+            alt: 'humidity_icon',
+            sensor: 'Q',
+            url: 'temp',
+        },
     ];
-    const [currentZone, setCurrentZone] = useState(1);
 
     return (
-        <Container>
-            <div className="mt-3 d-flex">
-                <div>
-                    <p className={`${styles.textZone} mb-1 m-0`}>Zone 1</p>
-                    <div
-                        className={`${styles.bgHouse} d-flex p-1 justify-content-center`}
-                    >
-                        <div className={`${styles.textHouse}`}>HOUSE A</div>
-                    </div>
-                </div>
-
-                <p className={`${styles.textDoor} m-0`}>DOOR</p>
-                <div className={`${styles.borderDoor}`}></div>
-
-                <div className="ml-auto d-flex">
-                    <div className="d-flex flex-column">
-                        <p className={`m-0 ${styles.textSelectZone}`}>
-                            Select the zone
-                        </p>
-                        <div className={`${styles.rowZone}`}>
-                            {zones.map((zone) => (
-                                <ZoneBlock
-                                    key={zone.id}
-                                    isCurrent={zone.id === currentZone}
-                                    zone={zone}
-                                    onClick={() => setCurrentZone(zone.id)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>{renderSwitch(history.location.pathname)}</div>
-        </Container>
+        <div>
+            <Container className={`${styles.bgLightBlue} mt-4`}>
+                <Row>
+                    {data.map((data, index) => (
+                        <Col
+                            xs="6"
+                            key={index}
+                            className="d-flex flex-column p-2"
+                            onClick={() => {
+                                onPropertySelected(data.property);
+                            }}
+                        >
+                            <div
+                                className={`${styles.bgCard} d-flex flex-column`}
+                            >
+                                <div className="d-flex flex-column text-center flex-grow-1 h-100">
+                                    {/* <p
+                                        className={`m-0 ${
+                                            isIrregular(data.property)
+                                                ? `${styles.textIrregular}`
+                                                : `${styles.textRecord}`
+                                        }`}
+                                    >
+                                        {data.result}
+                                    </p> */}
+                                    <p className={`${styles.textUnit} m-0`}>
+                                        {data.unit}
+                                    </p>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={upArrow} alt="upArrow" />
+                                        <p
+                                            className={`${styles.textPercent} m-0`}
+                                        >
+                                            {data.percentage}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="d-flex p-2">
+                                    <img
+                                        src={data.enviIcon}
+                                        alt={data.alt}
+                                        className={`${styles.textImage} mr-2`}
+                                    />
+                                    <div className="d-flex flex-column flex-grow-1 w-100">
+                                        <p
+                                            className={`${styles.textMeasure} m-0`}
+                                        >
+                                            {data.measure}
+                                        </p>
+                                        <p
+                                            className={`${styles.textSensor} m-0`}
+                                        >
+                                            From {data.sensor} sensors
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
+        </div>
     );
 };
 

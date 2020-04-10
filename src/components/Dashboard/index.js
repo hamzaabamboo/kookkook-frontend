@@ -1,178 +1,129 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import ammoniaIcon from '../../static/icon/fog.svg';
-import humidityIcon from '../../static/icon/humidity.svg';
+import { Context } from '../../Store';
+import WeeklyChart from '../WeeklyChart';
+import Zone from '../Zone';
 import io from 'socket.io-client';
 import styles from './index.module.scss';
-import tempIcon from '../../static/icon/temperature.svg';
-import upArrow from '../../static/icon/up_arrow.svg';
-import { useHistory } from 'react-router-dom';
-import windIcon from '../../static/icon/wind.svg';
 
-const socket = io(
-    'http://kookkook-backend-dev-ingress.default.202.28.193.100.xip.io/',
-);
+const socket = io('localhost:4000');
+
+const ZonePicker = ({ isSelect, zone, onSelectZone, isIrregular }) => {
+    return (
+        <div
+            // className={`mr-2 mb-2 d-flex justify-content-center ${
+            //     styles.bgBlock
+            // } ${
+            //     isSelect
+            //         ? `${styles.bgSelect}`
+            //         : isIrregular
+            //         ? `${styles.bgIrregular}`
+            //         : ``
+            // }`}
+            onClick={() => onSelectZone(zone)}
+        >
+            <p
+                className={`m-0 align-items-center d-flex ${styles.textZoneNum}`}
+            >
+                {zone}
+            </p>
+        </div>
+    );
+};
 
 const Dashboard = () => {
-    const [temp, setTemp] = useState();
-    const [ammonia, setAmmonia] = useState();
-    const [humidity, setHumidity] = useState();
-    const [windSpeed, setWindSpeed] = useState();
-    const [age, setAge] = useState(0);
-    const [tempLowerBound, setTempLowerBound] = useState();
-    const [tempUpperBound, setTempUpperBound] = useState();
-    const history = useHistory();
+    const { state, dispatch } = useContext(Context);
+    const [currentZone, setCurrentZone] = useState(1);
+    const [currentProperty, setCurrentProperty] = useState('temperature');
+    const [currentView, setCurrentView] = useState('zone');
+
+    const a = useContext(Context);
+    console.log(a);
 
     useEffect(() => {
-        socket.on('pipeRealtimeData', (result) => {
-            setTemp(Math.round(result.temperature));
-            setAmmonia(Math.round(result.ammonia));
-            setHumidity(Math.round(result.humidity));
-            setWindSpeed(Math.round(result.windSpeed));
+        socket.on('pipeRealTimeData', (result) => {
+            console.log('+++result++++');
             console.log(result);
+            const realtimeData = result;
+            dispatch({
+                type: 'update-zones',
+                payload: realtimeData,
+            });
         });
-        socket.emit('getRealtimeData');
-    }, []);
+        socket.emit('getRealTimeData');
+    }, [dispatch]);
 
-    // useEffect(() => {
-    //     if (age >= 0 && age <= 3) {
-    //         setTempLowerBound(84);
-    //         setTempUpperBound(95);
-    //     } else if (age >= 4 && age <= 7) {
-    //         setTempLowerBound(82);
-    //         setTempUpperBound(93);
-    //     } else if (age >= 8 && age <= 14) {
-    //         setTempLowerBound(80);
-    //         setTempUpperBound(91);
-    //     } else if (age >= 15 && age <= 21) {
-    //         setTempLowerBound(78);
-    //         setTempUpperBound(89);
-    //     } else if (age >= 22 && age <= 28) {
-    //         setTempLowerBound(76);
-    //         setTempUpperBound(87);
-    //     } else {
-    //         setTempLowerBound(74);
-    //         setTempUpperBound(85);
-    //     }
-    // }, []);
+    useEffect(() => {
+        console.log('++++state+++');
+        console.log(state);
+        console.log(state.zones);
+    }, [state]);
 
-    const compareTemp = () => {
-        if (temp >= tempLowerBound && temp <= tempUpperBound) {
-            return true;
-        } else {
-            return false;
+    const renderSwitch = (param) => {
+        switch (param) {
+            case 'zone':
+                return (
+                    <Zone
+                        currentZone={currentZone}
+                        onChangeView={(view) => setCurrentView(view)}
+                        onPropertySelected={(property) => {
+                            setCurrentProperty(property);
+                        }}
+                    />
+                );
+            case 'weekly':
+                return (
+                    <WeeklyChart
+                        property={currentProperty}
+                        onChangeView={(view) => setCurrentView(view)}
+                    />
+                );
+            default:
+                return;
         }
     };
 
-    const data = [
-        {
-            result: temp,
-            unit: 'CELSIUS',
-            percentage: '11.5%',
-            measure: 'TEMPERATURE',
-            enviIcon: tempIcon,
-            alt: 'temp_icon',
-            sensor: 'X',
-            url: 'temp',
-        },
-        {
-            result: windSpeed,
-            unit: 'KM/HR',
-            percentage: '11.5%',
-            measure: 'WIND',
-            enviIcon: windIcon,
-            alt: 'wind_icon',
-            sensor: 'Y',
-            url: 'temp',
-        },
-        {
-            result: ammonia,
-            unit: '',
-            percentage: '11.5%',
-            measure: 'AMMONIA',
-            enviIcon: ammoniaIcon,
-            alt: 'ammonia_icon',
-            sensor: 'Z',
-            url: 'temp',
-        },
-        {
-            result: humidity,
-            unit: '',
-            percentage: '11.5%',
-            measure: 'HUMIDITY',
-            enviIcon: humidityIcon,
-            alt: 'humidity_icon',
-            sensor: 'Q',
-            url: 'temp',
-        },
-    ];
-
     return (
-        <div>
-            <Container className="mt-4">
-                <Row>
-                    {data.map((data, index) => (
-                        <Col
-                            xs="6"
-                            key={index}
-                            className="d-flex flex-column p-2"
-                            onClick={() => {
-                                history.push(`/${data.url}`);
-                            }}
-                        >
-                            <div
-                                className={`${styles.bgCard} d-flex flex-column`}
-                            >
-                                <div className="d-flex flex-column text-center flex-grow-1 h-100">
-                                    <p
-                                        className={`m-0 ${
-                                            compareTemp
-                                                ? `${styles.textRecord}`
-                                                : `${styles.textIrregular}`
-                                        }`}
-                                    >
-                                        {data.result}
-                                    </p>
-                                    <p className={`${styles.textUnit} m-0`}>
-                                        {data.unit}
-                                    </p>
-                                    <div className="d-flex justify-content-center">
-                                        <img src={upArrow} alt="upArrow" />
-                                        <p
-                                            className={`${styles.textPercent} m-0`}
-                                        >
-                                            {data.percentage}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="d-flex p-2">
-                                    <img
-                                        src={data.enviIcon}
-                                        alt={data.alt}
-                                        className={`${styles.textImage} mr-2`}
-                                    />
-                                    <div className="d-flex flex-column flex-grow-1 w-100">
-                                        <p
-                                            className={`${styles.textMeasure} m-0`}
-                                        >
-                                            {data.measure}
-                                        </p>
-                                        <p
-                                            className={`${styles.textSensor} m-0`}
-                                        >
-                                            From {data.sensor} sensors
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
-        </div>
+        <Container>
+            <div className="mt-3 d-flex">
+                <div>
+                    <p className={`${styles.textZone} mb-1 m-0`}>Zone 1</p>
+                    <div
+                        className={`${styles.bgHouse} d-flex p-1 justify-content-center`}
+                    >
+                        <div className={`${styles.textHouse}`}>HOUSE A</div>
+                    </div>
+                </div>
+
+                <div className="ml-auto d-flex">
+                    <div className={`${styles.divDoor}`}>
+                        <p className={`${styles.textDoor} m-0`}>DOOR</p>
+                    </div>
+                    <div className="d-flex flex-column">
+                        <p className={`m-0 ${styles.textSelectZone}`}>
+                            Select the zone
+                        </p>
+                        <div className={`${styles.rowZone}`}>
+                            {[1, 2, 3, 4, 5, 6].map((zone) => (
+                                <ZonePicker
+                                    key={zone}
+                                    zone={zone}
+                                    onSelectZone={setCurrentZone}
+                                    isSelect={zone === currentZone}
+                                    // isIrregular={
+                                    //     state.zones.find(
+                                    //         (item) => item.sid === zone,
+                                    //     ).irregularEnv.length > 0
+                                    // }
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>{renderSwitch(currentView)}</div>
+        </Container>
     );
 };
 

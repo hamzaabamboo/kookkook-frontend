@@ -1,80 +1,49 @@
 @import '../../assets/sass/variables.scss';
 
-.textZone {
-    color: black;
-    font-size: 1.75rem;
-    font-weight: $font-weight-bold;
-    line-height: 36px;
-    letter-spacing: 0.03em;
+.textImage {
+    width: 24px;
+    padding-right: 2px;
+    flex-shrink: 1;
 }
 
-.bgHouse {
-    background-color: $theme-yellow-color;
-    min-height: 23px;
+.bgCard {
+    background-color: white;
+    min-height: 217px;
     border-radius: 8px;
-    width: 84px;
 }
 
-.textHouse {
-    color: #171717;
-    font-size: 0.75rem;
-    width: fit-content;
-}
-
-.bgBlock {
-    background-color: $theme-yellow-color;
-    min-height: 48px;
-    width: 48px;
-}
-
-.bgSelect {
-    background-color: $theme-blue-green-color;
-}
-
-.bgIrregular {
-    background-color: #ff4d6b;
-}
-
-.rowZone {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-    width: 112px;
-    height: 4%;
-}
-
-.has-cursor {
-    cursor: default;
-}
-
-.textZoneNum {
-    color: white;
-    font-size: 1.25rem;
+.textRecord {
     font-weight: $font-weight-medium;
+    font-size: 3.75rem;
+    color: #3aafae;
 }
 
-.textSelectZone {
-    color: #4d4d4d;
-    font-size: 0.75rem;
-    font-weight: $font-weight-regular;
+.textIrregular {
+    font-weight: $font-weight-medium;
+    font-size: 3.75rem;
+    color: #ff4d6b;
 }
 
-.textDoor {
-    color: #4d4d4d;
+.textUnit {
+    font-weight: $font-weight-light;
     font-size: 0.5rem;
-    font-weight: $font-weight-medium;
-    transform: rotate(-90deg);
-    position: absolute;
-    left: 215px;
-    top: 188px;
+    color: #393e41;
 }
 
-.borderDoor {
-    background-color: #777575;
-    position: absolute;
-    width: 5px;
-    height: 28px;
-    left: 235px;
-    top: 180px;
+.textPercent {
+    font-weight: $font-weight-medium;
+    font-size: 0.5rem;
+    color: #777575;
+}
+
+.textMeasure {
+    font-weight: $font-weight-bold;
+    font-size: 85%;
+    color: #393e41;
+}
+
+.textSensor {
+    font-weight: $font-weight-medium;
+    font-size: 0.5rem;
+    color: #979797;
 }

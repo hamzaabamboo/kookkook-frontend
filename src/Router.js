@@ -24,7 +24,7 @@ function appRouter() {
                         <Route path="/temp">
                             <Temp />
                         </Route>
-                        <Route path="/zone">
+                        <Route path="/dashboard">
                             <MainTabs />
                         </Route>
                         <Route path="/dead-chicken">
